@@ -1,3 +1,4 @@
+/*
 package pl.coderslab.charity.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,3 +23,4 @@ public class InstitutionController {
         return "foundation";
     }
 }
+*/
