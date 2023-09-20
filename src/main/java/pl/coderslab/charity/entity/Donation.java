@@ -28,6 +28,7 @@ public class Donation {
     @ManyToOne
     @JoinColumn(name = "institution_id")
     private Institution institution;
+
     @NotNull
     String street;
     @NotNull

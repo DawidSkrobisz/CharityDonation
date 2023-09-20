@@ -21,5 +21,4 @@ public class Institution {
 
     private String description;
 
-
-}
+ }

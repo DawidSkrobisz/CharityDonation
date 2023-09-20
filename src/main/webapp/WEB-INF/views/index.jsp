@@ -67,9 +67,9 @@
         <h2>O nas</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
             optio esse quisquam illo omnis.</p>
-        <img src="<c:url value="../../resources/images/signature.svg"/>" class="about-us--text-signature" alt="Signature"/>
+        <img src="<c:url value="/resources/images/signature.svg"/>" class="about-us--text-signature" alt="Signature"/>
     </div>
-    <div class="about-us--image"><img src="<c:url value="../../resources/images/about-us.jpg"/>" alt="People in circlee"/>
+    <div class="about-us--image"><img src="<c:url value="/resources/images/about-us.jpg"/>" alt="People in circlee"/>
     </div>
 </section>
 
@@ -81,19 +81,19 @@
         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
             Możesz sprawdzić czym się zajmują.</p>
 
-        <ul class="help--slides-items">
-            <c:forEach items="${institutions}" var="institution" varStatus="loop">
-                <li>
-                <div class="col">
-                    <div class="title">${institution.name}</div>
-                    <div class="subtitle">${institution.description}</div>
-                </div>
+        <ul class="columns">
+            <c:forEach items="${institutions}" var="institution">
+                <li class="column">
+                    <div class="col">
+                        <div class="title">${institution.name}</div>
+                        <div class="subtitle">${institution.description}</div>
+                    </div>
                 </li>
             </c:forEach>
         </ul>
     </div>
-
 </section>
+
 <%@ include file="footer.jsp" %>
 <script src="<c:url value="resources/js/app.js"/>"></script>
 </body>
