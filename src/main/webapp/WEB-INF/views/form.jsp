@@ -86,7 +86,7 @@
     <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
-        <form action="form-confirmation.html" method="post">
+        <form action="${pageContext.request.contextPath}/form" method="post">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
@@ -149,12 +149,15 @@
             <div data-step="2">
                 <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
 
-                <div class="form-group form-group--inline">
-                    <label>
-                        Liczba 60l worków:
-                        <input type="number" name="bags" step="1" min="1" />
-                    </label>
-                </div>
+                <form:form modelAttribute="nazwaModelu">
+                    <div class="form-group form-group--inline">
+                        <label for="quantity">
+                            Liczba 60l worków:
+                        </label>
+                        <form:input path="quantity" type="number" min="1" step="1" id="quantity"/>
+                    </div>
+                </form:form>
+
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
