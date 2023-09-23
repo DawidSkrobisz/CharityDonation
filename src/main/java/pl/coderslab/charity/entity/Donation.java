@@ -19,17 +19,13 @@ public class Donation {
     private Long id;
     @NotNull
     Integer quantity;
-
-
     @ManyToMany
     @JoinTable(name = "donation_category",
             joinColumns = @JoinColumn(name = "donation_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories;
-
     @ManyToOne
     private Institution institution;
-
     @NotNull
     String street;
     @NotNull
@@ -40,6 +36,5 @@ public class Donation {
     LocalDate pickUpDate;
     @NotNull
     LocalTime pickUpTime;
-
     String pickUpComment;
 }
