@@ -10,6 +10,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Entity
+@Table(name = "donation")
 @Getter
 @Setter
 public class Donation {
@@ -19,6 +20,7 @@ public class Donation {
     @NotNull
     Integer quantity;
 
+
     @ManyToMany
     @JoinTable(name = "donation_category",
             joinColumns = @JoinColumn(name = "donation_id"),
@@ -26,7 +28,6 @@ public class Donation {
     private List<Category> categories;
 
     @ManyToOne
-    @JoinColumn(name = "institution_id")
     private Institution institution;
 
     @NotNull
