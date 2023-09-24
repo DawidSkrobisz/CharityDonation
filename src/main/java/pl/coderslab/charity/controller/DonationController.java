@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.entity.Category;
 import pl.coderslab.charity.entity.Donation;
+import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.service.CategoryService;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
@@ -35,6 +36,8 @@ public class DonationController {
         model.addAttribute("donation", new Donation());
         List<Category> categoryList = categoryService.List();
         model.addAttribute("categoryList" , categoryList);
+        List<Institution> institutionList = institutionService.listInstitution();
+        model.addAttribute("institutionList", institutionList);
         return "form";
     }
 
