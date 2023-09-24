@@ -1,8 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -10,9 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
+    <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
 </head>
 <body>
+
 <header class="header--form-page">
     <nav class="container container--70">
         <ul class="nav--actions">
@@ -27,7 +30,7 @@
         </ul>
 
         <ul>
-            <li><a href="index.html" class="btn btn--without-border active">Start</a></li>
+            <li><a href="<c:url value="index.jsp" />" class="btn btn--without-border active">Start</a></li>
             <li><a href="index.html#steps" class="btn btn--without-border">O co chodzi?</a></li>
             <li><a href="index.html#about-us" class="btn btn--without-border">O nas</a></li>
             <li><a href="index.html#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
@@ -86,58 +89,24 @@
     <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
-        <form action="${pageContext.request.contextPath}/form" method="post">
+        <form:form action="/form" method="post">
+
             <!-- STEP 1: class .active is switching steps -->
-            <div data-step="1" class="active">
+            <div data-step="1" class="active" id="step-1">
                 <h3>Zaznacz co chcesz oddać:</h3>
 
                 <div class="form-group form-group--checkbox">
-                    <label>
-                        <input
-                                type="checkbox"
-                                name="categories"
-                                value="clothes-to-use"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="description"
-                        >ubrania, które nadają się do ponownego użycia</span>
-                    </label>
-                </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input
-                                type="checkbox"
-                                name="categories"
-                                value="clothes-useless"
-                        />
-                        <span class="checkbox"></span>
-                        <span class="description">ubrania, do wyrzucenia</span>
-                    </label>
-                </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox" name="categories" value="toys" />
-                        <span class="checkbox"></span>
-                        <span class="description">zabawki</span>
-                    </label>
-                </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox" name="categories" value="books" />
-                        <span class="checkbox"></span>
-                        <span class="description">książki</span>
-                    </label>
-                </div>
-
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="checkbox" name="categories" value="other" />
-                        <span class="checkbox"></span>
-                        <span class="description">inne</span>
-                    </label>
+                    <c:forEach items="${categoryList}" var="category">
+                        <label>
+                            <input
+                                    type="checkbox"
+                                    name="categories"
+                                    value="${category.name}"
+                            />
+                            <span class="checkbox"></span>
+                            <span class="description">${category.name}</span>
+                        </label>
+                    </c:forEach>
                 </div>
 
                 <div class="form-group form-group--buttons">
@@ -146,18 +115,15 @@
             </div>
 
             <!-- STEP 2 -->
-            <div data-step="2">
+            <div data-step="2" id="step-2">
                 <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
 
-                <form:form modelAttribute="nazwaModelu">
-                    <div class="form-group form-group--inline">
-                        <label for="quantity">
-                            Liczba 60l worków:
-                        </label>
-                        <form:input path="quantity" type="number" min="1" step="1" id="quantity"/>
-                    </div>
-                </form:form>
-
+                <div class="form-group form-group--inline">
+                    <label>
+                        Liczba 60l worków:
+                        <input type="number" name="bags" step="1" min="1" />
+                    </label>
+                </div>
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
@@ -308,10 +274,48 @@
                     <button type="submit" class="btn">Potwierdzam</button>
                 </div>
             </div>
-        </form>
+        </form:form>
     </div>
 </section>
-<%@ include file="footer.jsp" %>
+
+<footer>
+    <div class="contact">
+        <h2>Skontaktuj się z nami</h2>
+        <h3>Formularz kontaktowy</h3>
+        <form class="form--contact">
+            <div class="form-group form-group--50">
+                <input type="text" name="name" placeholder="Imię" />
+            </div>
+            <div class="form-group form-group--50">
+                <input type="text" name="surname" placeholder="Nazwisko" />
+            </div>
+
+            <div class="form-group">
+            <textarea
+                    name="message"
+                    placeholder="Wiadomość"
+                    rows="1"
+            ></textarea>
+            </div>
+
+            <button class="btn" type="submit">Wyślij</button>
+        </form>
+    </div>
+    <div class="bottom-line">
+        <span class="bottom-line--copy">Copyright &copy; 2018</span>
+        <div class="bottom-line--icons">
+            <a href="#" class="btn btn--small"
+            ><img src="images/icon-facebook.svg"
+            /></a>
+            <a href="#" class="btn btn--small"
+            ><img src="images/icon-instagram.svg"
+            /></a>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="js/app.js"></script>
+
 </body>
 </html>
+
