@@ -35,15 +35,15 @@ public class DonationController {
     public String form(Model model) {
         model.addAttribute("donation", new Donation());
         List<Category> categoryList = categoryService.List();
-        model.addAttribute("categoryList" , categoryList);
+        model.addAttribute("categoryList", categoryList);
         List<Institution> institutionList = institutionService.listInstitution();
         model.addAttribute("institutionList", institutionList);
         return "form";
     }
 
     @PostMapping
-    public String form(@ModelAttribute ("donation") Donation donation) {
-
+    public String form(@ModelAttribute("donation") Donation donation) {
+        donationService.saveDonation(donation);
         return "form-confirmation";
     }
 }

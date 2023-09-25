@@ -11,12 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
 </head>
 <body>
-
 <header class="header--form-page">
     <nav class="container container--70">
         <ul class="nav--actions">
@@ -31,7 +28,7 @@
         </ul>
 
         <ul>
-            <li><a href="<c:url value="index.jsp" />" class="btn btn--without-border active">Start</a></li>
+            <li><a href="index.html" class="btn btn--without-border active">Start</a></li>
             <li><a href="index.html#steps" class="btn btn--without-border">O co chodzi?</a></li>
             <li><a href="index.html#about-us" class="btn btn--without-border">O nas</a></li>
             <li><a href="index.html#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
@@ -91,24 +88,21 @@
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
         <form:form action="/form" method="post">
-
             <!-- STEP 1: class .active is switching steps -->
-            <div data-step="1" class="active" id="step-1">
-                <h3>Zaznacz co chcesz oddać:</h3>
+            <div data-step="1" class="active">
+                <h3>Zaznacz, co chcesz oddać:</h3>
 
-                <div class="form-group form-group--checkbox">
-                    <c:forEach items="${categoryList}" var="category">
+                <c:forEach items="${categoryList}" var="category">
+                    <div class="form-group form-group--checkbox">
                         <label>
-                            <input
-                                    type="checkbox"
-                                    name="categories"
-                                    value="${category.id}"
-                            />
+                            <input type="checkbox"
+                                   name="categories"
+                                   value="${category.id}"/>
                             <span class="checkbox"></span>
                             <span class="description">${category.name}</span>
                         </label>
-                    </c:forEach>
-                </div>
+                    </div>
+                </c:forEach>
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn next-step">Dalej</button>
@@ -253,10 +247,10 @@
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn" id="submit-button">Potwierdzam</button>
+                    <button type="submit" class="btn" id="submit-button">Potwierdzam</button>
                 </div>
             </div>
-        </form:form>
+            </form:form>
     </div>
 </section>
 
@@ -287,48 +281,18 @@
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
         <div class="bottom-line--icons">
             <a href="#" class="btn btn--small"
-            ><img src="images/icon-facebook.svg"
-            /></a>
+            ><img
+                    src="<c:url value="/resources/images/icon-facebook.svg"/>"
+                    alt="facebook-icon"/></a>
             <a href="#" class="btn btn--small"
-            ><img src="images/icon-instagram.svg"
-            /></a>
+            ><img
+                    src="<c:url value="/resources/images/icon-instagram.svg"/>"
+                    alt="instagram-icon"/></a>
         </div>
     </div>
 </footer>
-<script>
-    // Poczekaj, aż strona zostanie załadowana
-    document.addEventListener("DOMContentLoaded", function () {
-        const form = document.querySelector("form"); // Znajdź formularz
-        const steps = document.querySelectorAll("[data-step]"); // Znajdź wszystkie kroki
 
-        // Dla każdego przycisku "Dalej"
-        const nextButtons = document.querySelectorAll(".next-step");
-        nextButtons.forEach(function (button, index) {
-            button.addEventListener("click", function () {
-                if (index < steps.length - 1) {
-                    // Ukryj aktualny krok
-                    steps[index].classList.remove("active");
-                    // Przejdź do następnego kroku
-                    steps[index + 1].classList.add("active");
-                }
-            });
-        });
-
-        // Dla każdego przycisku "Wstecz"
-        const prevButtons = document.querySelectorAll(".prev-step");
-        prevButtons.forEach(function (button, index) {
-            button.addEventListener("click", function () {
-                if (index > 0) {
-                    // Ukryj aktualny krok
-                    steps[index].classList.remove("active");
-                    // Przejdź do poprzedniego kroku
-                    steps[index - 1].classList.add("active");
-                }
-            });
-        });
-    });
-</script>
+<script src="<c:url value="/resources/js/app.js"/>"></script>
 
 </body>
 </html>
-
