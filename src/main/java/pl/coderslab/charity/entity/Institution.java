@@ -16,7 +16,5 @@ public class Institution {
     private Long id;
     @NotNull
     private String name;
-
     private String description;
-
- }
+}
