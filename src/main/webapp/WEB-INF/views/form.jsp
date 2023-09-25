@@ -102,7 +102,7 @@
                             <input
                                     type="checkbox"
                                     name="categories"
-                                    value="${category.name}"
+                                    value="${category.id}"
                             />
                             <span class="checkbox"></span>
                             <span class="description">${category.name}</span>
@@ -127,12 +127,10 @@
                 </div>
 
                 <div class="form-group form-group--buttons">
-                    <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="button" class="btn next-step">Dalej</button>
+                    <button type="submit" class="btn prev-step">Wstecz</button>
+                    <button type="submit" class="btn next-step">Dalej</button>
                 </div>
             </div>
-
-
 
             <!-- STEP 4 -->
             <div data-step="3">
@@ -255,7 +253,7 @@
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
-                    <button type="submit" class="btn">Potwierdzam</button>
+                    <button type="button" class="btn" id="submit-button">Potwierdzam</button>
                 </div>
             </div>
         </form:form>
@@ -297,7 +295,39 @@
         </div>
     </div>
 </footer>
+<script>
+    // Poczekaj, aż strona zostanie załadowana
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form"); // Znajdź formularz
+        const steps = document.querySelectorAll("[data-step]"); // Znajdź wszystkie kroki
 
+        // Dla każdego przycisku "Dalej"
+        const nextButtons = document.querySelectorAll(".next-step");
+        nextButtons.forEach(function (button, index) {
+            button.addEventListener("click", function () {
+                if (index < steps.length - 1) {
+                    // Ukryj aktualny krok
+                    steps[index].classList.remove("active");
+                    // Przejdź do następnego kroku
+                    steps[index + 1].classList.add("active");
+                }
+            });
+        });
+
+        // Dla każdego przycisku "Wstecz"
+        const prevButtons = document.querySelectorAll(".prev-step");
+        prevButtons.forEach(function (button, index) {
+            button.addEventListener("click", function () {
+                if (index > 0) {
+                    // Ukryj aktualny krok
+                    steps[index].classList.remove("active");
+                    // Przejdź do poprzedniego kroku
+                    steps[index - 1].classList.add("active");
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
