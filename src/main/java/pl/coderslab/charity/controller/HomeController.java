@@ -28,9 +28,4 @@ public class HomeController {
         model.addAttribute("gives", gives);
         return "index";
     }
-
-    @RequestMapping("/register")
-    public String register(Model model){
-        return "register";
-    }
 }
