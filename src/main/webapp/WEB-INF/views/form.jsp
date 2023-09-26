@@ -293,5 +293,36 @@
     </div>
 </footer>
 <script src="<c:url value="/resources/js/app.js"/>"></script>
+ <%--<script>
+       var form = document.querySelector("form");
+
+        form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        var fields = form.elements;
+
+        var quantity = document.getElementById("quantity");
+        var institutionName = document.getElementById("institutionName");
+        var street = document.getElementById("street");
+        var city = document.getElementById("city");
+        var zipCode = document.getElementById("zipCode");
+        var phoneNumber = document.getElementById("phoneNumber");
+        var pickUpDate = document.getElementById("pickUpDate");
+        var pickUpTime = document.getElementById("pickUpTime");
+        var pickUpComment = document.getElementById("pickUpComment");
+
+        quantity.textContent = fields["quantity"].value;
+        institutionName.textContent = fields["institution"].value;
+        street.textContent = fields["street"].value;
+        city.textContent = fields["city"].value;
+        zipCode.textContent = fields["zipCode"].value;
+        phoneNumber.textContent = fields["phoneNumber"].value;
+        pickUpDate.textContent = fields["pickUpDate"].value;
+        pickUpTime.textContent = fields["pickUpTime"].value;
+        pickUpComment.textContent = fields["pickUpComment"].value;
+    });
+
+</script>--%>
 </body>
 </html>
