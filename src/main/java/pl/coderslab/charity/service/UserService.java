@@ -1,7 +1,5 @@
-/*
 package pl.coderslab.charity.service;
 
-import antlr.BaseAST;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,10 +23,8 @@ public class UserService {
 
         return userRepository.save(user);
     }
-
-
+    
     public List<User> userList() {
         return userRepository.findAll();
     }
 }
-*/

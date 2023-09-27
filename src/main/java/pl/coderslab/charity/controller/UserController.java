@@ -1,4 +1,3 @@
-/*
 package pl.coderslab.charity.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ import pl.coderslab.charity.service.UserService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/")
 public class UserController {
 
     private final UserService userService;
@@ -23,7 +22,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/register")
+    @RequestMapping("/register")
     public String registerForm(Model model) {
         return "register";
     }
@@ -40,6 +39,4 @@ public class UserController {
         model.addAttribute("users", users);
         return "user/list";
     }
-
 }
-*/

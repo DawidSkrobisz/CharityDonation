@@ -54,7 +54,7 @@
             <p>kurier przyjedzie w dogodnym terminie</p>
         </div>
     </div>
-    <a href="#" class="btn btn--large">Załóż konto</a>
+    <a href="/register" class="btn btn--large">Załóż konto</a>
 </section>
 <section class="about-us">
     <div class="about-us--text">

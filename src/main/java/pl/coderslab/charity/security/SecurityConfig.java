@@ -61,4 +61,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         jdbcDao.setAuthoritiesByUsernameQuery("SELECT username, role FROM user_roles WHERE username=?");
         return jdbcDao;
     }
-}*/
+}
+*/
