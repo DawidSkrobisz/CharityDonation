@@ -1,4 +1,3 @@
-/*
 package pl.coderslab.charity.security;
 
 import org.springframework.context.annotation.Bean;
@@ -62,4 +61,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return jdbcDao;
     }
 }
-*/
