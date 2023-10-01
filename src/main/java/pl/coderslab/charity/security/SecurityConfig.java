@@ -1,3 +1,4 @@
+/*
 package pl.coderslab.charity.security;
 
 import org.springframework.context.annotation.Bean;
@@ -23,16 +24,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.dataSource = dataSource;
     }
 
-    @Override
+*/
+/*    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username=?")
                 .authoritiesByUsernameQuery("SELECT username, role FROM user_roles WHERE username=?");
-    }
+    }*//*
 
-    @Override
+
+*/
+/*    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
@@ -40,24 +44,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/")
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll();
-    }
+    }*//*
 
-    @Bean
+
+*/
+/*    @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
+    }*//*
 
-    @Bean
+
+*/
+/*    @Bean
     public UserDetailsService userDetailsService() {
         JdbcDaoImpl jdbcDao = new JdbcDaoImpl();
         jdbcDao.setDataSource(dataSource);
         jdbcDao.setUsersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username=?");
         jdbcDao.setAuthoritiesByUsernameQuery("SELECT username, role FROM user_roles WHERE username=?");
         return jdbcDao;
-    }
+    }*//*
+
 }
+*/
