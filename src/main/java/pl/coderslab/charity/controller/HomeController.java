@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
@@ -27,5 +28,10 @@ public class HomeController {
         long gives = donationService.SumOfDonations();
         model.addAttribute("gives", gives);
         return "index";
+    }
+
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+    public String login() {
+        return "login";
     }
 }

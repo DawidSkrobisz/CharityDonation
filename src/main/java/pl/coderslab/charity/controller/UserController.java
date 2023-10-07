@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.service.UserService;
 
@@ -22,12 +23,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/register")
+    @RequestMapping("")
     public String registerForm(Model model) {
         return "register";
     }
 
-    @PostMapping("/register")
+    @PostMapping("")
     public String registerSubmit(User user) {
         userService.registerUser(user);
         return "redirect:/login";
@@ -39,4 +40,6 @@ public class UserController {
         model.addAttribute("users", users);
         return "user/list";
     }
+
+
 }
