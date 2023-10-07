@@ -27,11 +27,11 @@ public class UserController {
         return "register";
     }
 
-/*    @PostMapping("/register")
+    @PostMapping("/register")
     public String registerSubmit(User user) {
         userService.registerUser(user);
         return "redirect:/login";
-    }*/
+    }
 
     @GetMapping("/list")
     public String listUsers(Model model) {
