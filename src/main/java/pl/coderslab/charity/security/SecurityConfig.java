@@ -32,7 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery("SELECT username, role FROM user_roles WHERE username=?");
     }
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -48,12 +47,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -63,5 +60,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         jdbcDao.setAuthoritiesByUsernameQuery("SELECT username, role FROM user_roles WHERE username=?");
         return jdbcDao;
     }
-
 }
