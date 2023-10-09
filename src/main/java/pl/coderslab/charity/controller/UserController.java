@@ -57,6 +57,9 @@ public class UserController {
                               Model model,
                               HttpServletRequest request) {
 
+        System.out.println("Email: " + email);
+        System.out.println("Password: " + password);
+
         Authentication authentication = new UsernamePasswordAuthenticationToken(email, password);
         Authentication authenticated = authenticationManager.authenticate(authentication);
 
