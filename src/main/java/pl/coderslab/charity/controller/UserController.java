@@ -41,5 +41,9 @@ public class UserController {
         return "user/list";
     }
 
+    @GetMapping("/login")
+    public String loginForm(Model model) {
+        return "login";
+    }
 
 }

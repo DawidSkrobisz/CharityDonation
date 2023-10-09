@@ -6,11 +6,11 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Document</title>
-    <link rel="stylesheet" href="resources/css/style.css" />
+    <link rel="stylesheet" href="resources/css/style.css"/>
 </head>
 <body>
 <header>
@@ -32,12 +32,12 @@
 
 <section class="login-page">
     <h2>Zaloguj się</h2>
-    <form>
+    <form:form action="/login" method="post">
         <div class="form-group">
-            <input type="email" name="email" placeholder="Email" />
+            <input type="email" name="email" placeholder="Email"/>
         </div>
         <div class="form-group">
-            <input type="password" name="password" placeholder="Hasło" />
+            <input type="password" name="password" placeholder="Hasło"/>
             <a href="#" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
         </div>
 
@@ -45,7 +45,7 @@
             <a href="#" class="btn btn--without-border">Załóż konto</a>
             <button class="btn" type="submit">Zaloguj się</button>
         </div>
-    </form>
+    </form:form>
 </section>
 <%@ include file="footer.jsp" %>
 </body>
