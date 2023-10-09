@@ -4,13 +4,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Rejestracja</title>
     <link rel="stylesheet" href="<c:url value="../../resources/css/style.css"/>"/>
 </head>
 <body>
@@ -33,7 +34,10 @@
 
 <section class="login-page">
     <h2>Załóż konto</h2>
-    <form>
+    <form:form action="/register" method="post">
+        <div class="form-group">
+            <input type="username" name="username" placeholder="NazwaUzytkownika" />
+        </div>
         <div class="form-group">
             <input type="email" name="email" placeholder="Email" />
         </div>
@@ -45,10 +49,10 @@
         </div>
 
         <div class="form-group form-group--buttons">
-            <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
-            <button class="btn" type="submit">Załóż konto</button>
+            <a href="/login" class="btn btn--without-border">Zaloguj się</a>
+        <button class="btn" type="submit">Załóż konto</button>
         </div>
-    </form>
+    </form:form>
 </section>
 <%@ include file="footer.jsp" %>
 </body>

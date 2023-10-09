@@ -21,7 +21,7 @@ public class UserService {
 
 
     public User registerUser(User user) {
-        if (userRepository.findByEmail(user.getEmail()) != null) {
+        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
             throw new RuntimeException("Użytkownik o podanym adresie email już istnieje");
         }
         String encodedPassword = passwordEncoder.encode(user.getPassword());
