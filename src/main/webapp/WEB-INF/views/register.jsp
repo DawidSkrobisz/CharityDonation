@@ -34,7 +34,7 @@
 
 <section class="login-page">
     <h2>Załóż konto</h2>
-    <form:form action="/register" method="post">
+    <form:form action="/register/login" method="post">
         <div class="form-group">
             <input type="username" name="username" placeholder="NazwaUzytkownika" />
         </div>

@@ -2,6 +2,7 @@ package pl.coderslab.charity.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -28,9 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
-                .usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username=?")
-                .authoritiesByUsernameQuery("SELECT username, role FROM user_roles WHERE username=?");
+                .usersByUsernameQuery("SELECT email, password, enabled FROM users WHERE email=?")
+                .authoritiesByUsernameQuery("SELECT email, role FROM user_roles WHERE email=?");
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -50,6 +52,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
     @Bean
