@@ -56,18 +56,14 @@ public class UserController {
                               @RequestParam("password") String password,
                               Model model,
                               HttpServletRequest request) {
-        // Tutaj wykonaj logikę logowania, korzystając z Spring Security
 
-        // Przykładowa logika logowania
         Authentication authentication = new UsernamePasswordAuthenticationToken(email, password);
         Authentication authenticated = authenticationManager.authenticate(authentication);
 
         if (authenticated.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(authenticated);
-            // Jeśli logowanie się powiodło, przekieruj użytkownika na stronę główną
             return "redirect:/";
         } else {
-            // Jeśli logowanie się nie powiodło, przekieruj z powrotem na stronę logowania z komunikatem
             model.addAttribute("loginError", "Błędny email lub hasło");
             return "login";
         }
